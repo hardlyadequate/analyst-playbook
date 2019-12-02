@@ -1,37 +1,88 @@
-## Welcome to GitHub Pages
+# Incident Analyst Training 19-2 Playbook
 
-You can use the [editor on GitHub](https://github.com/c-o-d-e-b-e-a-r/IAT/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## What is it?
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The Incident Analyst Training (IAT) is a string of commercial and in house cyber flavoured training courses. The aim is to complete the entire training over five months. There are multiple assessments along the way and when I went through it I also completed GCFA and GNFA certifications. 
 
-### Markdown
+## List of Courses
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Course | Provider
+-------|---------
+Introduction to virtualisation | In house
+SEC 504 | SANS On-demand
+Python Fundamentals | TAFE
+FOR 500 | SANS On-demand
+Malware triage | In house
+FOR 508 | SANS On-demand
+FOR 572 | SNAS On-demand
+Linux enterprise incident response | Mandiant
+Briefing techniques | In house
+Writing winning technical documents | Engineers Australia
 
-```markdown
-Syntax highlighted code block
+## How to use
 
-# Header 1
-## Header 2
-### Header 3
+This was originally a Word document that I used as a quick reference during my assessments. I will try and keep the table of contents as descriptive as possible so it should be easy to find whatever you're looking for. 
 
-- Bulleted
-- List
+Every thing will also be kept on a single page so you'll be able to CTRL+f.
 
-1. Numbered
-2. List
+## Table of contents
 
-**Bold** and _Italic_ and `Code` text
+[ Things to do ](#things-to-do)
 
-[Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/c-o-d-e-b-e-a-r/IAT/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="things-to-do"></a>
+## Things to do
