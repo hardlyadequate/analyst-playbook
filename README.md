@@ -131,20 +131,20 @@ The following section contains general information about Windows, computers, bro
 <a name="win-event-logs"></a>
 ### Windows event logs
 
-The event logs are a rich source of information in an investigation. For Windows Security logs the following reference is really useful in knowing what each code is doing; https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/Default.aspx
+The event logs are a rich source of information in an investigation. For Windows Security logs the following reference is really useful in knowing what each code is doing; <https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/Default.aspx>
 
-For a forensic look at codes; https://www.forwarddefense.com/pdfs/Event_Log_Analyst_Reference.pdf
+For a forensic look at codes; <https://www.forwarddefense.com/pdfs/Event_Log_Analyst_Reference.pdf>
 
 #### Specific codes
 
 **5858 - Microsoft-Windows-WMI-Activity**
 
-These log will record WMI activity and will give a results code that potentially can give further information. For result codes go here: https://docs.microsoft.com/en-us/windows/win32/wmisdk/wmi-error-constants?redirectedfrom=MSDN
+These log will record WMI activity and will give a results code that potentially can give further information. For result codes go here: <https://docs.microsoft.com/en-us/windows/win32/wmisdk/wmi-error-constants?redirectedfrom=MSDN>
 
 <a name="track-wmi-activity"></a>
 ### Basics of tracking WMI activity
 
-Go to; https://www.darkoperator.com/blog/2017/10/14/basics-of-tracking-wmi-activity
+Go to; <https://www.darkoperator.com/blog/2017/10/14/basics-of-tracking-wmi-activity>
 
 <a name="the-epoch-times"></a>
 ### The epoch times
@@ -156,7 +156,7 @@ Programs and logs will often use various timestamps to record data. While timest
 | UNIX epoch time (POSIX time) | Seconds since 1970-01-01 00:00:00 UTC | 1570603604 |
 | FAT epoch time | Seconds since 1980-01-01 00:00:00 UTC |   |
 
-A list of other systems and when they start the count for their epoch time can be found here: https://en.wikipedia.org/wiki/Epoch_(computing).
+A list of other systems and when they start the count for their epoch time can be found here: <https://en.wikipedia.org/wiki/Epoch_(computing)>.
 
 For an online converter which also includes function from different programming languages to get the current epoch time, look here: https://www.epochconverter.com/.
 
