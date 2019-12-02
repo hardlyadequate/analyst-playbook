@@ -8,8 +8,8 @@ The target audience for this writeup is future students of this course.
 
 ## List of Courses
 
-Course | Provider
--------|---------
+Course | Provider 
+------- | ---------
 Introduction to virtualisation | In house
 SEC 504 | SANS On-demand
 Python Fundamentals | TAFE
@@ -29,8 +29,8 @@ Every thing will also be kept on a single page so you'll be able to CTRL+f.
 
 ## Table of contents
 
-[ Things to do ](#things-to-do) 
-[ Change log ](#change-log)
+- [ Things to do ](#things-to-do) 
+- [ Change log ](#change-log)
 
 <a name="things-to-do"></a>
 ## Things to do
