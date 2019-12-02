@@ -53,7 +53,7 @@ Every thing will also be kept on a single page so you'll be able to CTRL+f.
   - [HTTP response codes](#http-response-codes)
   - [Magic bytes for common files](#magic-bytes-common-files)
   - [Service start type](#service-start-types)
-  - [Interesting domain information0(#interesting-domain-info)
+  - [Interesting domain information](#interesting-domain-info)
 
 <a name="things-to-do"></a>
 ## Things to do
