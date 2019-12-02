@@ -29,60 +29,7 @@ Every thing will also be kept on a single page so you'll be able to CTRL+f.
 
 [ Things to do ](#things-to-do)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.
 
 <a name="things-to-do"></a>
 ## Things to do
