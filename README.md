@@ -48,5 +48,5 @@ This is probably never ending but here is a list of things I want to add. Reach 
 <a name="change-log"></a>
 ## Change log
 Date | Subject | Description
------|---------|------------
+----- | --------- | ------------
 3 Dec 19 | Start | Beginning of transfer of Word doc onto github.
