@@ -73,6 +73,7 @@ This is probably never ending but here is a list of things I want to add. Reach 
 
 <a name="change-log"></a>
 ## Change log
+[*back to table of contents*](#b2t)
 
 | Date | Subject | Description |
 | :-------- | :--------- | :------------ |
@@ -80,6 +81,7 @@ This is probably never ending but here is a list of things I want to add. Reach 
 
 <a name="general-iocs"></a>
 ## Genral IOCs
+[*back to table of contents*](#b2t)
 
 The purpose of this section is to give you an idea of what to look for that may indicate malicious activity. 
 
@@ -133,6 +135,7 @@ The following section contains general information about Windows, computers, bro
 
 <a name="win-event-logs"></a>
 ### Windows event logs
+[*back to table of contents*](#b2t)
 
 The event logs are a rich source of information in an investigation. For Windows Security logs the following reference is really useful in knowing what each code is doing; <https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/Default.aspx>
 
@@ -146,11 +149,13 @@ These log will record WMI activity and will give a results code that potentially
 
 <a name="track-wmi-activity"></a>
 ### Basics of tracking WMI activity
+[*back to table of contents*](#b2t)
 
 Go to; <https://www.darkoperator.com/blog/2017/10/14/basics-of-tracking-wmi-activity>
 
 <a name="the-epoch-times"></a>
 ### The epoch times
+[*back to table of contents*](#b2t)
 
 Programs and logs will often use various timestamps to record data. While timestamps like Local Times are easy enough to convert to UTC sometimes others are hard to recognise. Below is a table to help assist in identifying those timestamps.
 
@@ -165,6 +170,7 @@ For an online converter which also includes function from different programming 
 
 <a name="win-known-guids"></a>
 ### Windows known folder GUIDs
+[*back to table of contents*](#b2t)
 
 There are some common Windows GUIDs that an analyst should be across. Below is a brief table but more can be found here: <https://docs.microsoft.com/en-us/windows/win32/shell/knownfolderid>.
 
@@ -181,6 +187,7 @@ and
 
 <a name="win-known-sids"></a>
 ### Windows well known SIDs
+[*back to table of contents*](#b2t)
 
 This is something analysts will eventually get a feel for but it is generally known that the last part of the SID is the RID which can identify different types of users. For a comprehensive list go to: <https://support.microsoft.com/en-au/help/243330/well-known-security-identifiers-in-windows-operating-systems>.
 
@@ -198,6 +205,7 @@ To further explain the SID the below table breaks down the components of an exam
 
 <a name="http-ver-history"></a>
 ### HTTP version history
+[*back to table of contents*](#b2t)
 
 This information can be gleamed from the request string in most instances. 
 
@@ -210,6 +218,7 @@ This information can be gleamed from the request string in most instances.
 
 <a name="http-response-codes"></a>
 ### HTTP response codes
+[*back to table of contents*](#b2t)
 
 When a client submits a request to a webserver the server will respond with a three-digit code. Below is a brief list of those codes. 
 
@@ -231,11 +240,13 @@ When a client submits a request to a webserver the server will respond with a th
 
 <a name="win-time-rules"></a>
 ### Windows time rules
+[*back to table of contents*](#b2t)
 
 This is a pdf taken from the SANS website that provides a quick explaination of time rules with different file operations. Check out the top right table on the following poster: <https://www.sans.org/security-resources/posters/windows-forensic-analysis/170/download>.
 
 <a name="magic-bytes-common-files"></a>
 ### Magic bytes for common files
+[*back to table of contents*](#b2t)
 
 While these are the common magic bytes that you’ll come across a comprehensive list can be found at: <https://en.wikipedia.org/wiki/List_of_file_signatures>.
 
@@ -259,6 +270,7 @@ While these are the common magic bytes that you’ll come across a comprehensive
 
 <a name="service-start-types"></a>
 ### Servcie start types
+[*back to table of contents*](#b2t)
 
 |Value|	Start Type|	Meaning|
 | :--- | :--- | :--- |
@@ -270,6 +282,7 @@ While these are the common magic bytes that you’ll come across a comprehensive
 
 <a name="interesting-domain-info"></a>
 ### Interesting domain information
+[*back to table of contents*](#b2t)
 
 **Domain users**
 
