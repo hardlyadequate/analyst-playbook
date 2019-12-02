@@ -2,7 +2,7 @@
 
 ![rick morty image](https://c-o-d-e-b-e-a-r.github.io/IAT/images/rick-morty.png)
 
->*"Jesus, Morty. You can't just add a cyber word to any word and hope it means something." - Rick Sanchez
+>*"Jesus, Morty. You can't just add a cyber word to any word and hope it means something." - Rick Sanchez*
 
 ## What is it?
 
