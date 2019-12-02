@@ -16,7 +16,7 @@ Python Fundamentals | TAFE
 FOR 500 | SANS On-demand
 Malware triage | In house
 FOR 508 | SANS On-demand
-FOR 572 | SNAS On-demand
+FOR 572 | SANS On-demand
 Linux enterprise incident response | Mandiant
 Briefing techniques | In house
 Writing winning technical documents | Engineers Australia
@@ -47,6 +47,7 @@ This is probably never ending but here is a list of things I want to add. Reach 
 
 <a name="change-log"></a>
 ## Change log
+
 Date | Subject | Description
------ | --------- | ------------
+-------- | --------- | ------------
 3 Dec 19 | Start | Beginning of transfer of Word doc onto github.
