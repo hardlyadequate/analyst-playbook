@@ -4,6 +4,8 @@
 
 The Incident Analyst Training (IAT) is a string of commercial and in house cyber flavoured training courses. The aim is to complete the entire training over five months. There are multiple assessments along the way and when I went through it I also completed GCFA and GNFA certifications. 
 
+The target audience for this writeup is future students of this course. 
+
 ## List of Courses
 
 Course | Provider
@@ -27,9 +29,24 @@ Every thing will also be kept on a single page so you'll be able to CTRL+f.
 
 ## Table of contents
 
-[ Things to do ](#things-to-do)
-
-Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.Others, reading this post and using bitbucket.org: Markdown on bitbucket.org does not allow HTML tags (for security reasons). github.com and other Markdown environments do, so in a common Markdown editor on your PC it should work, but you cannot publish that on bitbucket.org.
+[ Things to do ](#things-to-do) 
+[ Change log ](#change-log)
 
 <a name="things-to-do"></a>
 ## Things to do
+This is probably never ending but here is a list of things I want to add. Reach out to me if you'd like to help contribute. 
+* Event ID table, build more on what's currently there.
+* Include SEC504 and FOR500 into the playbook.
+* Google analytic cookies, UTM.
+* Hubspot targeting cookies, __hstc.
+* DNS record types (572-b2p55) grab from my index. 
+* acronym list
+*	tshark into tools with basic switches.
+*	FTP file extraction with wireshark (572b3p74-82)
+*	kibana analysis setup
+
+<a name="change-log"></a>
+## Change log
+Date | Subject | Description
+-----|---------|------------
+3 Dec 19 | Start | Beginning of transfer of Word doc onto github.
