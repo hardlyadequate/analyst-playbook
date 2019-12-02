@@ -33,6 +33,7 @@ This was originally a Word document that I used as a quick reference during my a
 
 Every thing will also be kept on a single page so you'll be able to CTRL+f.
 
+<a name="b2t"></a>
 ## Table of contents
 
 - [ Things to do ](#things-to-do) 
@@ -57,6 +58,8 @@ Every thing will also be kept on a single page so you'll be able to CTRL+f.
 
 <a name="things-to-do"></a>
 ## Things to do
+[*back to table of contents*](#b2t)
+
 This is probably never ending but here is a list of things I want to add. Reach out to me if you'd like to help contribute. 
 * Event ID table, build more on what's currently there.
 * Include SEC504 and FOR500 into the playbook.
