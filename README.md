@@ -1,4 +1,5 @@
-# Incident Analyst Training 19-2 Playbook
+# Incident Analyst Training Playbook
+*I completed this course November 2019.*
 
 ![rick morty image](https://c-o-d-e-b-e-a-r.github.io/IAT/images/rick-morty.png)
 
