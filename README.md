@@ -158,28 +158,28 @@ Programs and logs will often use various timestamps to record data. While timest
 
 A list of other systems and when they start the count for their epoch time can be found here: <https://en.wikipedia.org/wiki/Epoch_(computing)>.
 
-For an online converter which also includes function from different programming languages to get the current epoch time, look here: https://www.epochconverter.com/.
+For an online converter which also includes function from different programming languages to get the current epoch time, look here: <https://www.epochconverter.com/>.
 
 <a name="win-known-guids"></a>
 ### Windows known folder GUIDs
 
-There are some common Windows GUIDs that an analyst should be across. Below is a brief table but more can be found here: https://docs.microsoft.com/en-us/windows/win32/shell/knownfolderid.
+There are some common Windows GUIDs that an analyst should be across. Below is a brief table but more can be found here: <https://docs.microsoft.com/en-us/windows/win32/shell/knownfolderid>.
 
 | Display Name | GUID |
 | :----------- | :--- |
 | Start Menu | {625B53C3-AB48-4EC1-BA1F-A1EF4146FC19} |
 | VSS | {3808876b-xxxx-xxxx-xxxx-xxxxxxxxxxxx} |
 
-For more information on the VSS read; https://github.com/libyal/libvshadow/blob/master/documentation/Volume%20Shadow%20Snapshot%20(VSS)%20format.asciidoc 
+For more information on the VSS read; <https://github.com/libyal/libvshadow/blob/master/documentation/Volume%20Shadow%20Snapshot%20(VSS)%20format.asciidoc>
 
 and 
 
-https://docs.microsoft.com/en-us/windows/win32/vss/shadow-copies-and-shadow-copy-sets.
+<https://docs.microsoft.com/en-us/windows/win32/vss/shadow-copies-and-shadow-copy-sets>.
 
 <a name="win-known-sids"></a>
 ### Windows well known SIDs
 
-This is something analysts will eventually get a feel for but it is generally known that the last part of the SID is the RID which can identify different types of users. For a comprehensive list go to: https://support.microsoft.com/en-au/help/243330/well-known-security-identifiers-in-windows-operating-systems.
+This is something analysts will eventually get a feel for but it is generally known that the last part of the SID is the RID which can identify different types of users. For a comprehensive list go to: <https://support.microsoft.com/en-au/help/243330/well-known-security-identifiers-in-windows-operating-systems>.
 
 | SID |	Meaning |
 | :--- | :--- |
@@ -229,12 +229,12 @@ When a client submits a request to a webserver the server will respond with a th
 <a name="win-time-rules"></a>
 ### Windows time rules
 
-This is a pdf taken from the SANS website that provides a quick explaination of time rules with different file operations. Check out the top right table on the following poster: https://www.sans.org/security-resources/posters/windows-forensic-analysis/170/download.
+This is a pdf taken from the SANS website that provides a quick explaination of time rules with different file operations. Check out the top right table on the following poster: <https://www.sans.org/security-resources/posters/windows-forensic-analysis/170/download>.
 
 <a name="magic-bytes-common-files"></a>
 ### Magic bytes for common files
 
-While these are the common magic bytes that you’ll come across a comprehensive list can be found at: https://en.wikipedia.org/wiki/List_of_file_signatures.
+While these are the common magic bytes that you’ll come across a comprehensive list can be found at: <https://en.wikipedia.org/wiki/List_of_file_signatures>.
 
 | Type |	Mnemonic |	Byte Signature (0x) |
 | :--- | :--- | :--- |
@@ -272,7 +272,7 @@ While these are the common magic bytes that you’ll come across a comprehensive
 
 It is possible to query the following registry key on the domain controller,
 
-SOFTWARE\Microsoft\Windows NT\CurrentVersion\Profile List
+*SOFTWARE\Microsoft\Windows NT\CurrentVersion\Profile List*
 
 This can be used to compare an SID and get the username of the domain user.
 
