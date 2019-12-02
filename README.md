@@ -1,5 +1,9 @@
 # Incident Analyst Training 19-2 Playbook
 
+![rick morty image](https://c-o-d-e-b-e-a-r.github.io/IAT/images/rick-morty.png)
+
+>*"Jesus, Morty. You can't just add a cyber word to any word and hope it means something." - Rick Sanchez
+
 ## What is it?
 
 The Incident Analyst Training (IAT) is a string of commercial and in house cyber flavoured training courses. The aim is to complete the entire training over five months. There are multiple assessments along the way and when I went through it I also completed GCFA and GNFA certifications. 
