@@ -1,5 +1,5 @@
 # Incident Analyst Training Playbook
-*I completed this course November 2019.*
+*Course completed November 2019.*
 
 ![rick morty image](https://c-o-d-e-b-e-a-r.github.io/IAT/images/rick-morty.png)
 
@@ -34,6 +34,8 @@ This was originally a Word document that I used as a quick reference during my a
 
 Every thing will also be kept on a single page so you'll be able to CTRL+f.
 
+Where it's applicable I will delineate whether I'm using the [***LINUX-SIFT***](https://digital-forensics.sans.org/community/downloads) or the [***WIN-SIFT***]. Note that the ***WIN-SIFT*** is only available if you're doing one of the SANS courses that provides it otherwise download a [Windows VM](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/) and install the tool yourself. 
+
 <a name="b2t"></a>
 ## Table of contents
 
@@ -45,6 +47,7 @@ Every thing will also be kept on a single page so you'll be able to CTRL+f.
   - [PowerShell download cradle](#ps-download-cradle)
   - [Domain controller ntdsutil](#dc-ntdsutil)
   - [Proxy logs](#proxy-logs)
+  - [Folder/file creation](#folderfile-creation)
 - [General information](#gen-win-info)
   - [Windows event logs](#win-event-logs)
   - [Basics of tracking WMI activity](#track-wmi-activity)
@@ -57,10 +60,11 @@ Every thing will also be kept on a single page so you'll be able to CTRL+f.
   - [Service start type](#service-start-types)
   - [Interesting domain information](#interesting-domain-info)
   - [Browser behaviour](#browser-behaviour)
-- [Live capturing tools)(#live-cap-tools)
+- [Live capturing tools](#live-cap-tools)
   - [tcpdump](#live-tcpdump)
 - [Analysis tips & tools](#analysis-tools)
   - [Mounting shared folders in Linux](#mount-share-folders-linux)
+  - [The Sleuth Kit](#sleuth-kit)
 
 <a name="things-to-do"></a>
 ## Things to do
@@ -133,6 +137,11 @@ You may also be able to grep out 'example-mail.com' and then look for `sentconfi
 #### Data dumping
 
 It will be useful to stay on top of what are the most common dumping sites/exfiltration methods. This could be cloud storage like OneDrive, SharePoint, Google Drive, or websites like GitHub or PasteBin. PasteBin will send you a short link to what you uploaded and can be used to see what may be exfiltrated.
+
+<a name="folderfile-creation"></a>
+### Folder/file creation 
+
+If you can see file creation in areas where you know it needs Administrator permissions (ie. Program Files and the Windows folders), from a user that you know is an attacker then you know that the attacker has gained privileges equivalent to the Administrator. 
 
 <a name="gen-win-info"></a>
 ## General information
@@ -341,10 +350,86 @@ To capture active and passive FTP traffic use,
 ### Mounting shared folders in Linux
 [*back to table of contents*](#b2t)
 
+Mounting a shared folder from a Windows host to a Linux VM in Workstation Pro. 
+Open VM settings, click options, enable Shared Folders and add the host folder path.
+
 ![sharedfolder image](https://c-o-d-e-b-e-a-r.github.io/IAT/images/sharedfolder.png)
 
+On the Linux VM do the following `sudo vmware-hgfsclient`
 
+Note the output (it should reflect the name you set when editing VM settings. For this example the output was `Challenge`
 
+Make a directory where you want to mount the shared folder.
+
+`sudo mkdir /mnt/hgfs/Challenge`
+
+Connect the shared folder to the directory you created.
+
+`sudo vmhgfs-fuse .host:/Challenge /mnt/hgfs/Challenge -o allow_other -o uid=1000`
+
+Files should now appear on your mounted directory. If you want to automount edit `/etc/fstab`.
+
+`.host:/{shared-folder}/{path-to-mount-on} vmhgfs defaults,ttl=5,uid=1000,gid=1000 0 0`
+
+<a name="sleuth-kit"></a>
+### The Sleuth Kit 
+[*back to table of contents*](#b2t)
+
+***LINUX-SIFT***
+
+The Sleuth Kit (TSK) is a cmdline tool that is useful for quick incident response. The tool is designed to be used on a disk image. 
+
+For the purpose of this section assume the disk image we're using is `SonicAir_DomainController.raw`.
+
+**Get offsets**: `mmls`, will output the offsets needed for further commands. 
+
+![mmls image](https://c-o-d-e-b-e-a-r.github.io/IAT/images/mmls.png)
+
+In the image above we can see the start of the partitions for the drives. The first NTFS partition is the reserved portion so what we're interested in is the second value, `718848`.
+
+This is the number that we will use with the `-o` switch. 
+
+**Check filesystem inodes**: I won't explain what inodes are here but we can use the numbers and the following commands to traverse the disk image within the cmdline. 
+
+The following image shows the top level file structure of the disk image we're looking at; `fls -o 718848 SonicAir_DomainController.raw`.
+
+![foldertraversal image](https://c-o-d-e-b-e-a-r.github.io/IAT/images/foldertraversal.png)
+
+Then lets say you want to go into and look at the users directory we can use its inode to look at it; `fls -o 718848 SonicAir_DomainController.raw 406`
+
+![foldertraversal image](https://c-o-d-e-b-e-a-r.github.io/IAT/images/userfolder.png)
+
+**Output MFT timeline**: The master file table (MFT) contains a lot of good information about file creation and changes on the disk. It will also contain both the $STANDARD_INFORMATION and $FILENAME timestamps for the file.
+
+Run the following (the MFT inode is always 0);
+
+`icat -o 718848 SonicAir_DomainController.raw 0 > mft.raw`
+
+`icat` can be used just like `cat` on the linux cmdline and used similar to above to output any file you can find. 
+
+`analyzeMFT.py -f mft.raw -e -o mft.csv`
+
+The `-e` switch in the above command outputs the times in a UTC format rather than epoch time. 
+
+**Output a file list**: This may be useful to just see obviously suspicious files especially if the names stick out or you know the filesystem you're working with. 
+
+`fls -o 718848 SonicAir_DomainController.raw -r -p > c_filelist.txt`
+
+**Output file timeline**: This timeline will only contain the mactimes and would be hard to see time-stompping. If that is a concern then you can always look into the `mft.csv`.
+
+`fls -o 718848 SonicAir_DomainController.raw -r -p -m C:/ > bodyfile.body`
+
+Then run;
+
+`mactime -z -b bodyfile.body -d -y [2019-01-01] > fls_timeline.csv`
+
+In the above command if `[2019-01-01]` is left out then it will give the entire timeline or if you're only interested in a period then you can look at a range `[2019-01-01..2019-01-24]`.
+
+**Recover directories**: You may want to recover a directory, particularly the `$OrphanFiles` which may contain files deleted by the attacker. 
+
+`mkdir recovered_recyclebin`
+
+`tsk_recover -o 718848 SonicAir_DomainController.raw -e -d 84736 recovered_recyclebin/`
 
 
 
