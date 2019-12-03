@@ -65,6 +65,13 @@ Where it's applicable I will delineate whether I'm using the [***LINUX-SIFT***](
 - [Analysis tips & tools](#analysis-tools)
   - [Mounting shared folders in Linux](#mount-share-folders-linux)
   - [The Sleuth Kit](#sleuth-kit)
+  - [Volatility](#volatility)
+  - [Kernel OST viewer](#kernel-ost-viewer)
+  - [Wireshark](#wireshark)
+  - [tshark](#tshark)
+  - [Cyber Chef](#cyber-chef)
+  - [exiftool](#exiftool)
+  - [xclip](#xclip)
 
 <a name="things-to-do"></a>
 ## Things to do
@@ -430,6 +437,266 @@ In the above command if `[2019-01-01]` is left out then it will give the entire 
 `mkdir recovered_recyclebin`
 
 `tsk_recover -o 718848 SonicAir_DomainController.raw -e -d 84736 recovered_recyclebin/`
+
+<a name="volatility"></a>
+### Volatility 
+[*back to table of contents*](#b2t)
+
+***LINUX-SIFT***
+
+**Volatility References**: The volatility github page provides a list of the basic commands and examples of how they are used. <https://github.com/volatilityfoundation/volatility/wiki/Command-Reference>
+
+Investigating Windows threads with volatility. <http://mnin.blogspot.com/2011/04/investigating-windows-threads-with.html>
+
+**Github plugins**: Third party plugins can be used with volatility and will be very useful in assessing some malware that is on the system.
+
+Make sure if you are using the `-–plugin` switch, that it appears first in the command line for it to successfully run ie, 
+
+`volatility --plugin=<path_to_dir> -f <image> --profile=<profile> [command]`
+
+`USBSTOR`: Scans registries for values relating to USB devices plugged into the system. <https://github.com/kevthehermit/volatility_plugins/tree/master/usbstor>
+
+`cobaltstrikescan.py`: Used for detecting Cobalt Strike using volatility. <https://github.com/JPCERTCC/aa-tools/blob/master/cobaltstrikescan.py>
+
+**Getting profile information**: When you first have a memory image the profile of the image will need to be extracted to use with the other commands that will be run, this can be done using the following on the Linux SIFT,
+
+`vol.py -f image.raw imageinfo > imageinfo.txt`
+
+This can be used in conjunction with the following to get a better idea of the profile,
+
+`vol.py -f image.raw kdbgscan > kdbgscan.txt`
+
+**Rogue processes**: A good place to start is, 
+
+`vol.py -f image.raw --profile=<profile> psscan > psscan.txt`
+
+`vol.py -f image.raw --profile=<profile> pstree > pstree.txt`
+
+This can then be further dug into using pslist with the `-p` option for a process ID. 
+
+**Command line arguments for processes**: We can get a list of DLLs attached to the processes and the command line invocation used with, 
+
+`vol.py -f image.raw --profile=<profile> dlllist`
+
+We can also use the optional `-p` option to look at a single process.
+
+**User that ran a process**: It may be useful to know which user started a process particularly if we have already identified a rouge user account.
+
+`vol.py -f image.raw --profile=<profile> getsids -p <PID>`
+
+We can then grep the whole output of getsids to see what else the user was running.
+
+`vol.py -f image.raw --profile=<profile> getsids |grep -i <username>`
+
+**Looking at handles**: The volatility handles plugin can be used to help further identify further IOCs or can be used to so network indicators that may be in processes that should be. 
+
+The following command shows how to get the handles in a good format for a single process, 
+
+`vol.py -f image.raw --profile=<profile> handles -s -t File,Key -p <PID>`
+
+**Network artifacts**: We can review the network connections with the following command,
+
+`vol.py -f image.raw --profile=<profile> netscan > netscan.txt`
+
+This can further be filtered by adding using, `egrep -i ‘CLOSE|ESTABLISHED|Offset`.
+
+**Counting services**:
+
+`vol.py -f image.raw --profile=<profile> svcscan -v |grep “Service Name” |wc -l`
+
+This will count the amount of services on the memory image. 
+
+**Finding code injection**: The following command will find suspicious processes in memory which can be used for further the research,
+
+`vol.py -f image.raw --profile=<profile> malfind > malfind.txt`
+
+We can then use procdump with volatility and then use the following command to look at the readable strings.
+
+`strings -a -t d -e l process.<random_string>.<hex_string>.dmp >> <process_name>.uni`
+
+This may reveal strings that we can Google which could reveal malicious code or titles. 
+
+**Investigating a process further**
+
+First lets dump a process. 
+
+`vol.py -f image.raw --profile=<profile> procdump -p <PID> --dump-dir=./`
+
+Have a quick review of the executable,
+
+`strings -a -t d executable.<PID>.exe`
+
+Then lets use pescan to give us an analysis of the executable. 
+
+`pescan -anomalies executable.<PID>.exe`
+
+Then let’s check the memory dump for the same process. 
+
+`vol.py -f image.raw --profile=<profile> memdump -p <PID> --dump-dir=./`
+
+Then use strings again,
+
+`strings -a -t d -e l <PID>.dmp > strings<PID>.uni`
+
+We can then grep for IOCs that we found elsewhere or we can look for shares.
+
+`grep -i ‘\\c\$’ strings<PID>.uni`
+
+**Check for files in memory**
+
+We can use the following command to check for documents that may be opened in memory. 
+
+`vol.py -f image.raw --profile=<profile> filescan > filescan.txt`
+
+If we are interested in Word documents in memory then we can use the following. 
+
+`grep -i docx filescan.txt`
+
+**Extract a driver from a memory image**
+
+First lets identify the base offset of the driver that we want to extract. 
+
+`vol.py -f image.raw --profile=<profile> modules`
+
+Then we can use the base value to dump the driver. 
+
+`vol.py -f image.raw --profile=<profile> moddump -b <base_offset> --dump-dir=./`
+
+<a name="kernel-ost-viewer"></a>
+### Kernel OST viewer 
+[*back to table of contents*](#b2t)
+
+***WIN-SIFT***
+
+This tool is useful to review a users outlook files.
+
+1.	Mount the imaged drive through Arsenal Image Mounter.
+2.	Launch Kernel OST Viewer.
+3.	Navigate to; `<mounted drive letter>:/Users/<user>/AppData/Local/Microsoft/Outlook/<ost file>`
+
+<a name="wireshark"></a>
+### Wireshark
+[*back to table of contents*](#b2t)
+
+***either-SIFT***
+
+Wireshark can be used to filter through packets and the display filters will be useful to find things that are suspicious.
+
+**POST requests**: From a client machine or even a server POST requests are usually suspicious and in general may be rare within the environment. This can be looked at using the display filter;
+
+`http.request.method == “POST”`
+
+**HTTP host**: If the site that is being posted to this can be added onto the display filter with and or just search for by itself;
+
+`http.host contains “example.com”`
+
+<a name="tshark"></a>
+### tshark 
+[*back to table of contents*](#b2t)
+
+***LINUX-SIFT***
+
+This is the command line based tool of Wireshark.
+
+**Convert pcapng to pcap**: The following command will convert the pcapng to pcap;
+
+`tshark -F pcap -r <input pcapng file> -w <output pcap file>`
+
+**Display filters**: The display filters that you would use for Wireshark can be used exactly as is in tshark.
+
+`tshark -n -r example.pcap -Y ‘http.host contains “examplesite.com”’`
+
+**Extract files**: From the above we may find a packet and then extract something from that stream, first let’s assume the frame number is `29099`. Get the stream number out;
+
+`tshark -n -r example.pcap -Y ‘frame.number==29099’ -T fields -e tcp.stream`
+
+Then using the stream number (assume `465`) extract the data out and save the file;
+
+`tshark -n -r example.pcap -Y ‘tcp.stream==465’ -T fields -e tcp.segment_data > data_extract.txt`
+
+Remove all the newlines and colon separator characters;
+
+`cat data_extract. txt | awk '{printf “%s”, $1}' | tr -d ':' > base64_hex.txt`
+
+Convert this into ASCII equivalent;
+
+`cat base64_hex.txt | perl -nE ‘print pack(“H*”, $_);’ > http_post.txt`
+
+Then remove all the none base64 encoded data and use cyber chef to decode it. 
+
+<a name="cyber-chef"></a>
+### Cyber Chef 
+[*back to table of contents*](#b2t)
+
+This is an excellent online resource and can be used for analysis in the following ways.
+
+**Decode base64**: Malicious attackers will often encode their payloads in base64 for obfuscation. When an analyst comes across this then the following link will be useful to put it into human readable format, <https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true)Remove_null_bytes()>
+
+The recipe is first decoding it and then removing the null bytes, making it easier to add into your notes or even insert into a script to test. 
+
+<a name="exiftool"></a>
+### exiftool 
+[*back to table of contents*](#b2t)
+
+***LINUX-SIFT***
+
+This is a Linux based tool that can read and write meta information in files. Used by,
+
+`exiftool <file>`
+
+<a name="xclip"></a>
+### xclip 
+[*back to table of contents*](#b2t)
+
+***LINUX-SIFT***
+
+Very handy tool to get text data onto your clipboard from Linux. I usually will use this with the `cat` command and will work when remoting to another system and you have an interactive shell. This is not a native tool. 
+
+`cat <file> |xclip -sel c`
+
+<a name="event-log-explorer"></a>
+### Event log explorer 
+[*back to table of contents*](#b2t)
+
+***WIN-SIFT***
+
+Windows event logs on modern systems can be found in `\Windows\system32\winevt\logs\`. This first example relates to the Security log. 
+
+Open ‘Event Log Explorer’ and then `File > Open Log File > New API`.
+
+Event logs are usually located in `C:\Winodws\system32\winevt\logs`.
+
+If the program cannot open a log try again but with the ‘Direct’ option which is more tolerant of log file corruption.
+
+Whenever opening a new log go through this process:
+
+`View > Time Correction > Select “Display UTC Time”`
+
+On the Windows SIFT we have the ability to add colour coding to the Viewer.
+
+`View > Color Coding > Load… > add “G:\Event-Log-Explorer-Templates\ELEX-Security-Log-Color-Coding.ecc” > Close`
+
+We can also use the SANS custom columns.
+
+`View > Custom Columns > Load > Load all columns > add “G:\Event-Log-Explorer-Templates\ELEX-Security-Log-508-Custom-Columns_English.ccols” > Open > OK`
+
+For the System log complete the steps above but swap out the Security log for the System log and also use the `G:\Event-Log-Explorer-Templates\ELEX-System-Log-Custom-Columns_Any-Language.ccols` file.
+
+Other interesting log locations that are covered in the SANS FOR508 exercises 2.x are:
+
+`TaskScheduler%4Operational.evtx`
+
+`Microsoft-Windows-WMI-Activity%40Operational.evtx`
+
+`Microsoft-Windows-PowerShell-Activity%40Operational.evtx`
+
+
+
+
+
+
+
+
 
 
 
