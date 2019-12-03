@@ -68,10 +68,12 @@ Where it's applicable I will delineate whether I'm using the [***LINUX-SIFT***](
   - [Volatility](#volatility)
   - [Kernel OST viewer](#kernel-ost-viewer)
   - [Wireshark](#wireshark)
+  - [NetworkMiner](#networkminer)
   - [tshark](#tshark)
   - [Cyber Chef](#cyber-chef)
   - [exiftool](#exiftool)
   - [xclip](#xclip)
+  - [Event log explorer](#event-log-explorer)
 
 <a name="things-to-do"></a>
 ## Things to do
@@ -94,7 +96,7 @@ This is probably never ending but here is a list of things I want to add. Reach 
 
 | Date | Subject | Description |
 | :-------- | :--------- | :------------ |
-| 3 Dec 19 | Start | Beginning of transfer of Word doc onto github. Completed up to browser behaviour.|
+| 3 Dec 19 | Start | Beginning of transfer of Word doc onto github. Completed up to SANS FOR508 exercises.|
 
 <a name="general-iocs"></a>
 ## Genral IOCs
@@ -590,6 +592,26 @@ Wireshark can be used to filter through packets and the display filters will be 
 
 `http.host contains “example.com”`
 
+<a name="networkminer"></a>
+### NetworkMiner 
+[*back to table of contents*](#b2t)
+
+***LINUX-SIFT***
+
+This can be used for some quick wins. You’ll only be able to use pcap with the free version so if you have a pcapng image then use [convert pcapng to pcap](#tshark).
+
+To install this on the ***LINUX-SIFT*** machine I followed the following link <https://www.netresec.com/?page=Blog&month=2014-02&post=HowTo-install-NetworkMiner-in-Ubuntu-Fedora-and-Arch-Linux>.
+
+First follow Step 1 for Ubuntu and then check the version of Mono. If need by go to the link it gives and just install the new Mono which will update what you have. 
+
+Then follow step 2 but use the link in the green box with the `wget` instead. This is because we want version 2.4.
+
+Finally create a line in the users `.bashrc`;
+
+`alias NetworkMiner='mono /opt/NetworkMiner_2-4/NetworkMiner.exe'`
+
+This is so in a terminal you can simply type `NetworkMiner` to launch the program.
+
 <a name="tshark"></a>
 ### tshark 
 [*back to table of contents*](#b2t)
@@ -689,17 +711,3 @@ Other interesting log locations that are covered in the SANS FOR508 exercises 2.
 `Microsoft-Windows-WMI-Activity%40Operational.evtx`
 
 `Microsoft-Windows-PowerShell-Activity%40Operational.evtx`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
