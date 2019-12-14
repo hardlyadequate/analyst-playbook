@@ -1,7 +1,7 @@
 # Incident Analyst Playbook
 *Edited December 2019.*
 
-![rick morty image](https://c-o-d-e-b-e-a-r.github.io/beginner_analyst/images/rick-morty.png)
+![rick morty image](https://codebear.github.io/beginner_analyst/images/rick-morty.png)
 
 >*"Jesus, Morty. You can't just add a cyber word to any word and hope it means something." - Rick Sanchez*
 
@@ -349,7 +349,7 @@ To capture active and passive FTP traffic use,
 Mounting a shared folder from a Windows host to a Linux VM in Workstation Pro. 
 Open VM settings, click options, enable Shared Folders and add the host folder path.
 
-![sharedfolder image](https://c-o-d-e-b-e-a-r.github.io/beginner_analyst/images/sharedfolder.png)
+![sharedfolder image](https://codebear.github.io/beginner_analyst/images/sharedfolder.png)
 
 On the Linux VM do the following `sudo vmware-hgfsclient`
 
@@ -379,7 +379,7 @@ For the purpose of this section assume the disk image we're using is `DomainCont
 
 **Get offsets**: `mmls`, will output the offsets needed for further commands. 
 
-![mmls image](https://c-o-d-e-b-e-a-r.github.io/beginner_analyst/images/mmls.png)
+![mmls image](https://codebear.github.io/beginner_analyst/images/mmls.png)
 
 In the image above we can see the start of the partitions for the drives. The first NTFS partition is the reserved portion so what we're interested in is the second value, `718848`.
 
@@ -389,11 +389,11 @@ This is the number that we will use with the `-o` switch.
 
 The following image shows the top level file structure of the disk image we're looking at; `fls -o 718848 DomainController.raw`.
 
-![foldertraversal image](https://c-o-d-e-b-e-a-r.github.io/beginner_analyst/images/foldertraversal.png)
+![foldertraversal image](https://codebear.github.io/beginner_analyst/images/foldertraversal.png)
 
 Then lets say you want to go into and look at the users directory we can use its inode to look at it; `fls -o 718848 DomainController.raw 406`
 
-![foldertraversal image](https://c-o-d-e-b-e-a-r.github.io/beginner_analyst/images/userfolder.png)
+![foldertraversal image](https://codebear.github.io/beginner_analyst/images/userfolder.png)
 
 **Output MFT timeline**: The master file table (MFT) contains a lot of good information about file creation and changes on the disk. It will also contain both the $STANDARD_INFORMATION and $FILENAME timestamps for the file.
 
