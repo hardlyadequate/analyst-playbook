@@ -21,7 +21,7 @@ Of course there is a section of additional content that I would like to add. I'm
 
 Everything will be kept on a single page so you'll be able to CTRL+f.
 
-Where it's applicable I will delineate whether I'm using the [***LINUX-SIFT***](https://digital-forensics.sans.org/community/downloads) or the [***WIN-SIFT***]. Note that the ***WIN-SIFT*** is only available if you're doing one of the SANS courses that provides it otherwise download a [Windows VM](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/) and install the tool yourself. 
+Where it's applicable I will delineate whether I'm using the [***LINUX-SIFT***](https://digital-forensics.sans.org/community/downloads) or the ***WIN-SIFT***. Note that the ***WIN-SIFT*** is only available if you're doing one of the SANS courses that provides it otherwise download a [Windows VM](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/) and install the tool yourself. 
 
 <a name="b2t"></a>
 ## Table of contents
