@@ -1,38 +1,25 @@
 # Incident Analyst Playbook
 *Edited December 2019.*
 
-![rick morty image](https://c-o-d-e-b-e-a-r.github.io/IAT/images/rick-morty.png)
+![rick morty image](https://c-o-d-e-b-e-a-r.github.io/beginner_analyst/images/rick-morty.png)
 
 >*"Jesus, Morty. You can't just add a cyber word to any word and hope it means something." - Rick Sanchez*
 
 ## What is it?
 
-The Incident Analyst Training (IAT) is a string of commercial and in house cyber flavoured training courses. The aim is to complete the entire training over five months. There are multiple assessments along the way and when I went through it I also completed GCFA and GNFA certifications. 
+Starting out can often be the hardest part of anything you want to try. I know when I first started in this field that I had no idea where to even start looking. The advice that I generally got was just start reading and doing CTF's. In the end this did help but it wasn't until I had a mentor help me along the way that I got the hang of doing them. I hope this guide will ease you into the CTF's or provide an idea of how to approach certain problems. 
 
-The target audience for this writeup is future students of this course. 
+As a note some of my training revolves around [SANS courses](https://www.sans.org/), which I highly recommend. The courses that are relevent to some of the content in here is FOR 500, FOR 508, and FOR 572. These three courses are advertised in their incident analyst pathway. 
 
-It could also be for someone who wants to learn about forensic CTFs.
+## What's next?
 
-## List of Courses
+In 2020 I aim to record myself doing a forensic themed CTF where you will be able to see and hear my thought process and put it up on YouTube. 
 
-Course | Provider 
-------- | ---------
-Introduction to virtualisation | In house
-SEC 504 | SANS On-demand
-Python Fundamentals | TAFE
-FOR 500 | SANS On-demand
-Malware triage | In house
-FOR 508 | SANS On-demand
-FOR 572 | SANS On-demand
-Linux enterprise incident response | Mandiant
-Briefing techniques | In house
-Writing winning technical documents | Engineers Australia
+Of course there is a section of additional content that I would like to add. I'm happy to take suggestions as well. 
 
 ## How to use
 
-This was originally a Word document that I used as a quick reference during my assessments. I will try and keep the table of contents as descriptive as possible so it should be easy to find whatever you're looking for. 
-
-Every thing will also be kept on a single page so you'll be able to CTRL+f.
+Everything will be kept on a single page so you'll be able to CTRL+f.
 
 Where it's applicable I will delineate whether I'm using the [***LINUX-SIFT***](https://digital-forensics.sans.org/community/downloads) or the [***WIN-SIFT***]. Note that the ***WIN-SIFT*** is only available if you're doing one of the SANS courses that provides it otherwise download a [Windows VM](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/) and install the tool yourself. 
 
@@ -362,7 +349,7 @@ To capture active and passive FTP traffic use,
 Mounting a shared folder from a Windows host to a Linux VM in Workstation Pro. 
 Open VM settings, click options, enable Shared Folders and add the host folder path.
 
-![sharedfolder image](https://c-o-d-e-b-e-a-r.github.io/IAT/images/sharedfolder.png)
+![sharedfolder image](https://c-o-d-e-b-e-a-r.github.io/beginner_analyst/images/sharedfolder.png)
 
 On the Linux VM do the following `sudo vmware-hgfsclient`
 
@@ -388,11 +375,11 @@ Files should now appear on your mounted directory. If you want to automount edit
 
 The Sleuth Kit (TSK) is a cmdline tool that is useful for quick incident response. The tool is designed to be used on a disk image. 
 
-For the purpose of this section assume the disk image we're using is `SonicAir_DomainController.raw`.
+For the purpose of this section assume the disk image we're using is `DomainController.raw`.
 
 **Get offsets**: `mmls`, will output the offsets needed for further commands. 
 
-![mmls image](https://c-o-d-e-b-e-a-r.github.io/IAT/images/mmls.png)
+![mmls image](https://c-o-d-e-b-e-a-r.github.io/beginner_analyst/images/mmls.png)
 
 In the image above we can see the start of the partitions for the drives. The first NTFS partition is the reserved portion so what we're interested in is the second value, `718848`.
 
@@ -400,19 +387,19 @@ This is the number that we will use with the `-o` switch.
 
 **Check filesystem inodes**: I won't explain what inodes are here but we can use the numbers and the following commands to traverse the disk image within the cmdline. 
 
-The following image shows the top level file structure of the disk image we're looking at; `fls -o 718848 SonicAir_DomainController.raw`.
+The following image shows the top level file structure of the disk image we're looking at; `fls -o 718848 DomainController.raw`.
 
-![foldertraversal image](https://c-o-d-e-b-e-a-r.github.io/IAT/images/foldertraversal.png)
+![foldertraversal image](https://c-o-d-e-b-e-a-r.github.io/beginner_analyst/images/foldertraversal.png)
 
-Then lets say you want to go into and look at the users directory we can use its inode to look at it; `fls -o 718848 SonicAir_DomainController.raw 406`
+Then lets say you want to go into and look at the users directory we can use its inode to look at it; `fls -o 718848 DomainController.raw 406`
 
-![foldertraversal image](https://c-o-d-e-b-e-a-r.github.io/IAT/images/userfolder.png)
+![foldertraversal image](https://c-o-d-e-b-e-a-r.github.io/beginner_analyst/images/userfolder.png)
 
 **Output MFT timeline**: The master file table (MFT) contains a lot of good information about file creation and changes on the disk. It will also contain both the $STANDARD_INFORMATION and $FILENAME timestamps for the file.
 
 Run the following (the MFT inode is always 0);
 
-`icat -o 718848 SonicAir_DomainController.raw 0 > mft.raw`
+`icat -o 718848 DomainController.raw 0 > mft.raw`
 
 `icat` can be used just like `cat` on the linux cmdline and used similar to above to output any file you can find. 
 
@@ -422,11 +409,11 @@ The `-e` switch in the above command outputs the times in a UTC format rather th
 
 **Output a file list**: This may be useful to just see obviously suspicious files especially if the names stick out or you know the filesystem you're working with. 
 
-`fls -o 718848 SonicAir_DomainController.raw -r -p > c_filelist.txt`
+`fls -o 718848 DomainController.raw -r -p > c_filelist.txt`
 
 **Output file timeline**: This timeline will only contain the mactimes and would be hard to see time-stompping. If that is a concern then you can always look into the `mft.csv`.
 
-`fls -o 718848 SonicAir_DomainController.raw -r -p -m C:/ > bodyfile.body`
+`fls -o 718848 DomainController.raw -r -p -m C:/ > bodyfile.body`
 
 Then run;
 
@@ -438,7 +425,7 @@ In the above command if `[2019-01-01]` is left out then it will give the entire 
 
 `mkdir recovered_recyclebin`
 
-`tsk_recover -o 718848 SonicAir_DomainController.raw -e -d 84736 recovered_recyclebin/`
+`tsk_recover -o 718848 DomainController.raw -e -d 84736 recovered_recyclebin/`
 
 <a name="volatility"></a>
 ### Volatility 
