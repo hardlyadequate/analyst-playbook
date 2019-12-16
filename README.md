@@ -1,3 +1,5 @@
+[Back to main page.](https://cybercodebear.github.io/)
+
 *Edited December 2019.*
 
 ![rick morty image](https://cybercodebear.github.io/beginner_analyst/images/rick-morty.png)
