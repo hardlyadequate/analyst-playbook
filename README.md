@@ -1,4 +1,3 @@
-# Incident Analyst Playbook
 *Edited December 2019.*
 
 ![rick morty image](https://cybercodebear.github.io/beginner_analyst/images/rick-morty.png)
