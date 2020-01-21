@@ -48,8 +48,12 @@ Where it's applicable I will delineate whether I'm using the [***LINUX-SIFT***](
   - [Service start type](#service-start-types)
   - [Interesting domain information](#interesting-domain-info)
   - [Browser behaviour](#browser-behaviour)
-- [Live capturing tools](#live-cap-tools)
+- [Capturing tools](#live-cap-tools)
   - [tcpdump](#live-tcpdump)
+  - [DumpIt](#dumpit)
+  - [Encrypted Disk Detector](#edd)
+  - [CyLR](#cylr)
+  - [FTK Imager](#ftkimager)
 - [Analysis tips & tools](#analysis-tools)
   - [Mounting shared folders in Linux](#mount-share-folders-linux)
   - [The Sleuth Kit](#sleuth-kit)
@@ -85,6 +89,7 @@ This is probably never ending but here is a list of things I want to add. Reach 
 | Date | Subject | Description |
 | :-------- | :--------- | :------------ |
 | 3 Dec 19 | Start | Beginning of transfer of Word doc onto github. Completed up to SANS FOR508 exercises.|
+| 21 Jan 20 | 500 | I began to transfer knowledge areas for Windows disk forensics into my blog. Still need to work on the FTK Image part. |
 
 <a name="general-iocs"></a>
 ## Genral IOCs
@@ -324,7 +329,7 @@ When the user hits ENTER after entering the search in the address bar or the sea
 `/search?sugexp=chrome,mod=9&sourceid=chrome&ie=UTF-8&q=dead+drop+for+data`
 
 <a name="live-cap-tools"></a>
-## Live capturing tools
+## Capturing tools
 
 <a name="live-tcpdump"></a>
 ### tcpdump
@@ -339,6 +344,60 @@ To capture active-mode FTP traffic use the following,
 To capture active and passive FTP traffic use, 
 
 ```sudo tcpdump - i ens33 -w ftp_full.pcap '(tcp and (port 21 or ((src portrange 1024-65535 or src port 20) and (dst portrange 1024- 65535 or dst port 20)))'```
+
+<a name="dumpit"></a>
+### DumpIt
+
+DumpIt is an executable that can be used from a USB and once run it will pull live memory from a system. It can be downloaded from here: https://my.comae.com/login. You will need to sign up to download. 
+
+<a name="edd"></a>
+### Encrypted Disk Detector
+
+This tool is made by Magnet Forensics and is free to download once you have signed up. It can be used to detect a variety of disk encryption on a live system. If you run this tool and discover disk encrytion then you will need to do live disk acquisition if you don't have the password to unlock the machine once it it turned off. 
+
+You can download the tool from here: https://www.magnetforensics.com/resources/encrypted-disk-detector/.
+
+<a name="cylr"></a>
+### CyLR
+
+The below description is taken from the github page: https://github.com/orlikoski/CyLR.
+
+The CyLR tool collects forensic artifacts from hosts with NTFS file systems quickly, securely and minimizes impact to the host.
+
+The main features are:
+
+- Quick collection (it's really fast)
+- Raw file collection process does not use Windows API
+- Optimized to store the collected artifacts in memory (minimizing or removing entirely the need to write additional artifacts on the host disk)
+- Built in SFTP capability
+
+CyLR uses .NET Core and runs natively on Windows, Linux, and MacOS. Self contained applications for the following are included in releases for version 2.0 and higher.
+
+- Windows x86
+- Windows x64
+- Linux x64
+- MacOS x64
+
+I have used this in dead forensics before and not as live acquisition. My method to create a triage image was:
+
+1. Mount the image you have in FTK Imager as a 'Block Device/Read Only'.
+2. Note the drive letter of the newly mount drive.
+3. Note all of the User Names of the users on the image. 
+4. Update the `CyLR_Config.txt` file and save it in the same directory as CyLR.exe.
+5. In an Admin command prompt run: `CyLR.exe -c CyLR_Config.txt`.
+
+<a name="ftkimager"></a>
+### FTK Imager
+
+This is one of my favourite tools to use in forensics due to its ease of use, versatility, and reliability. 
+
+To create a triage image add the full disk image that you have acquired follow below:
+
+1. Go to File > Add Evidence Item...
+2. Add the full disk image that you have just acquired.
+3. Then go through and manually add the following list of items by right clicking and then selecting 'Add to custom content image (AD1)'.
+
+| |
 
 <a name="analysis-tools"></a>
 ## Analysis tips & tools
