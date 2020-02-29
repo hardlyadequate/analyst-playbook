@@ -89,9 +89,9 @@ This is probably never ending but here is a list of things I want to add. Reach 
 
 | Date | Subject | Description |
 | :-------- | :--------- | :------------ |
-| 3 Dec 19 | Start | Beginning of transfer of Word doc onto github. Completed up to SANS FOR508 exercises.|
-| 21 Jan 20 | 500 | I began to transfer knowledge areas for Windows disk forensics into my blog. Still need to work on the FTK Image part. |
 | 1 Mar 20 | Linux Forensics | Updated the volatility section to include how to make profiles for Linux forensics. |
+| 21 Jan 20 | 500 | I began to transfer knowledge areas for Windows disk forensics into my blog. Still need to work on the FTK Image part. |
+| 3 Dec 19 | Start | Beginning of transfer of Word doc onto github. Completed up to SANS FOR508 exercises.|
 
 <a name="general-iocs"></a>
 ## Genral IOCs
