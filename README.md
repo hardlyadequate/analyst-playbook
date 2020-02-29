@@ -58,6 +58,7 @@ Where it's applicable I will delineate whether I'm using the [***LINUX-SIFT***](
   - [Mounting shared folders in Linux](#mount-share-folders-linux)
   - [The Sleuth Kit](#sleuth-kit)
   - [Volatility](#volatility)
+    - [Volatility on Linux](#volatilityonlinux)
   - [Kernel OST viewer](#kernel-ost-viewer)
   - [Wireshark](#wireshark)
   - [NetworkMiner](#networkminer)
@@ -490,6 +491,15 @@ In the above command if `[2019-01-01]` is left out then it will give the entire 
 <a name="volatility"></a>
 ### Volatility 
 [*back to table of contents*](#b2t)
+
+<a name="volatilityonlinux"></a>
+#### Volatility on Linux Machines
+
+The process itself is the same but setting up the profile may be difficult. I have written a blog for a beginner task which explains it all [here](https://cybercodebear.github.io/forensic_tasks/beginner_linux_forensics)
+
+Remember the following key points:
+- You and check if your profile is available with `volatility --info |grep Linux`
+- The plugins are pretty much the same they just look like `linux_pslist`. A full list can be seen with `volatility --info|grep linux`
 
 ***LINUX-SIFT***
 
