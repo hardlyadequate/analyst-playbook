@@ -1,6 +1,6 @@
 [Back to main page.](https://cybercodebear.github.io/)
 
-![rick morty image](https://cybercodebear.github.io/beginner_analyst/images/rick-morty.png)
+![rick morty image](https://cybercodebear.github.io/analyst-playbook/images/rick-morty.png)
 
 >*"Jesus, Morty. You can't just add a cyber word to any word and hope it means something." - Rick Sanchez*
 
@@ -439,7 +439,7 @@ For the purpose of this section assume the disk image we're using is `DomainCont
 
 **Get offsets**: `mmls`, will output the offsets needed for further commands. 
 
-![mmls image](https://cybercodebear.github.io/beginner_analyst/images/mmls.png)
+![mmls image](https://cybercodebear.github.io/analyst-playbook/images/mmls.png)
 
 In the image above we can see the start of the partitions for the drives. The first NTFS partition is the reserved portion so what we're interested in is the second value, `718848`.
 
@@ -449,11 +449,11 @@ This is the number that we will use with the `-o` switch.
 
 The following image shows the top level file structure of the disk image we're looking at; `fls -o 718848 DomainController.raw`.
 
-![foldertraversal image](https://cybercodebear.github.io/beginner_analyst/images/foldertraversal.png)
+![foldertraversal image](https://cybercodebear.github.io/analyst-playbook/images/foldertraversal.png)
 
 Then lets say you want to go into and look at the users directory we can use its inode to look at it; `fls -o 718848 DomainController.raw 406`
 
-![foldertraversal image](https://cybercodebear.github.io/beginner_analyst/images/userfolder.png)
+![foldertraversal image](https://cybercodebear.github.io/analyst-playbook/images/userfolder.png)
 
 **Output MFT timeline**: The master file table (MFT) contains a lot of good information about file creation and changes on the disk. It will also contain both the $STANDARD_INFORMATION and $FILENAME timestamps for the file.
 
