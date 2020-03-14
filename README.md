@@ -397,6 +397,7 @@ To create a triage image add the full disk image that you have acquired follow b
 2. Add the full disk image that you have just acquired.
 3. Then go through and manually add the following list of items by right clicking and then selecting 'Add to custom content image (AD1)'.
 
+# TODO add the list of items to add from notebook.
 | |
 
 <a name="analysis-tools"></a>
@@ -409,7 +410,7 @@ To create a triage image add the full disk image that you have acquired follow b
 Mounting a shared folder from a Windows host to a Linux VM in Workstation Pro. 
 Open VM settings, click options, enable Shared Folders and add the host folder path.
 
-![sharedfolder image](https://cybercodebear.github.io/beginner_analyst/images/sharedfolder.png)
+![sharedfolder image](https://cybercodebear.github.io/analyst-playbook/images/sharedfolder.png)
 
 On the Linux VM do the following `sudo vmware-hgfsclient`
 
