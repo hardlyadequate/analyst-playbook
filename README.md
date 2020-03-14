@@ -1,5 +1,7 @@
 [Back to main page.](https://cybercodebear.github.io/)
 
+[Back to blog.](https://cybercodebear.github.io/playbook/2020/03/01/analyst-playbook.html)
+
 ![rick morty image](https://cybercodebear.github.io/analyst-playbook/images/rick-morty.png)
 
 >*"Jesus, Morty. You can't just add a cyber word to any word and hope it means something." - Rick Sanchez*
