@@ -2,10 +2,6 @@
 
 [Back to blog.](https://cybercodebear.github.io/playbook/2020/03/01/analyst-playbook.html)
 
-![rick morty image](https://cybercodebear.github.io/analyst-playbook/images/rick-morty.png)
-
->*"Jesus, Morty. You can't just add a cyber word to any word and hope it means something." - Rick Sanchez*
-
 ## What is it?
 
 Starting out can often be the hardest part of anything you want to try. I know when I first started in this field that I had no idea where to even start looking. The advice that I generally got was just start reading and doing CTF's. In the end this did help but it wasn't until I had a mentor help me along the way that I got the hang of doing them. I hope this guide will ease you into the CTF's or provide an idea of how to approach certain problems. 
