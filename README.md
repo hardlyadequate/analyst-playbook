@@ -1,7 +1,5 @@
 [Back to main page.](https://cybercodebear.github.io/)
 
-*Edited December 2019.*
-
 ![rick morty image](https://cybercodebear.github.io/beginner_analyst/images/rick-morty.png)
 
 >*"Jesus, Morty. You can't just add a cyber word to any word and hope it means something." - Rick Sanchez*
