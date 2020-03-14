@@ -493,7 +493,7 @@ In the above command if `[2019-01-01]` is left out then it will give the entire 
 <a name="volatilityonlinux"></a>
 #### Volatility on Linux Machines
 
-The process itself is the same but setting up the profile may be difficult. I have written a blog for a beginner task which explains it all [here](https://cybercodebear.github.io/forensic_tasks/beginner_linux_forensics).
+The process itself is the same but setting up the profile may be difficult. I have written a blog for a beginner task which explains it all [here](https://cybercodebear.github.io/tasks/2020/03/07/beginner-linux-forensics.html).
 
 Remember the following key points:
 - You and check if your profile is available with `volatility --info |grep Linux`
