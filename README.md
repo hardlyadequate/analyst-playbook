@@ -152,23 +152,23 @@ The following section contains general information about Windows, computers, bro
 ### Windows event logs
 [*back to table of contents*](#b2t)
 
-The event logs are a rich source of information in an investigation. 
+The event logs are a rich source of information in an investigation. As this is an indepth topic I will link out to other blogs and PDF references. These help me each time I need to perform event log analysis. 
 
 For an up to date comprehensive guide check out [Event Log Analyst Reference](https://www.appliedincidentresponse.com/resources/) by [Steve Anson](https://www.linkedin.com/in/steveanson/). 
 
-For Windows Security logs the following reference is really useful in knowing what each code is doing; <https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/Default.aspx>
+For Windows Security logs the following [reference](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/Default.aspx) is really useful in knowing what each code is doing.
 
 #### Specific codes
 
 **5858 - Microsoft-Windows-WMI-Activity**
 
-These log will record WMI activity and will give a results code that potentially can give further information. For result codes go here: <https://docs.microsoft.com/en-us/windows/win32/wmisdk/wmi-error-constants?redirectedfrom=MSDN>
+This log will record WMI activity and will give a results code that potentially can give further information. For result codes go [here](https://docs.microsoft.com/en-us/windows/win32/wmisdk/wmi-error-constants?redirectedfrom=MSDN).
 
 <a name="track-wmi-activity"></a>
 ### Basics of tracking WMI activity
 [*back to table of contents*](#b2t)
 
-Go to; <https://www.darkoperator.com/blog/2017/10/14/basics-of-tracking-wmi-activity>
+Reference for this is [here](https://www.darkoperator.com/blog/2017/10/14/basics-of-tracking-wmi-activity).
 
 <a name="the-epoch-times"></a>
 ### The epoch times
