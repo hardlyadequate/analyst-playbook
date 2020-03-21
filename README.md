@@ -88,6 +88,7 @@ This is probably never ending but here is a list of things I want to add. Reach 
 | 1 Mar 20 | Linux Forensics | Updated the volatility section to include how to make profiles for Linux forensics. |
 | 21 Jan 20 | 500 | I began to transfer knowledge areas for Windows disk forensics into my blog. Still need to work on the FTK Image part. |
 | 3 Dec 19 | Start | Beginning of transfer of Word doc onto github. Completed up to SANS FOR508 exercises.|
+| 22 Mar 20 | Win Evt Logs | Updated table for Windows Evt Logs. | 
 
 <a name="general-iocs"></a>
 ## Genral IOCs
@@ -152,9 +153,11 @@ The following section contains general information about Windows, computers, bro
 ### Windows event logs
 [*back to table of contents*](#b2t)
 
-The event logs are a rich source of information in an investigation. For Windows Security logs the following reference is really useful in knowing what each code is doing; <https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/Default.aspx>
+The event logs are a rich source of information in an investigation. 
 
-For a forensic look at codes; <https://www.forwarddefense.com/pdfs/Event_Log_Analyst_Reference.pdf>
+For an up to date comprehensive guide check out [Event Log Analyst Reference](https://www.appliedincidentresponse.com/resources/) by [Steve Anson](https://www.linkedin.com/in/steveanson/). 
+
+For Windows Security logs the following reference is really useful in knowing what each code is doing; <https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/Default.aspx>
 
 #### Specific codes
 
